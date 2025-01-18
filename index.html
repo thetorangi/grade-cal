@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SGPI Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
+      .container {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+      }
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Grade Calculator</h1>
+      <form id="gradeForm">
+        <div class="form-group">
+          <label for="sepm">SEPM</label>
+          <select id="sepm" class="score-select">
+            <option value="">Select your score</option>
+            <option value="30">AA (10)</option>
+            <option value="27">AB (9)</option>
+            <option value="24">BB (8)</option>
+            <option value="21">BC (7)</option>
+            <option value="18">CC (6)</option>
+            <option value="15">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mis">MIS</label>
+          <select id="mis" class="score-select">
+            <option value="">Select your score</option>
+            <option value="30">AA (10)</option>
+            <option value="27">AB (9)</option>
+            <option value="24">BB (8)</option>
+            <option value="21">BC (7)</option>
+            <option value="18">CC (6)</option>
+            <option value="15">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="os">OS</label>
+          <select id="os" class="score-select">
+            <option value="">Select your score</option>
+            <option value="30">AA (10)</option>
+            <option value="27">AB (9)</option>
+            <option value="24">BB (8)</option>
+            <option value="21">BC (7)</option>
+            <option value="18">CC (6)</option>
+            <option value="15">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="math">Math</label>
+          <select id="math" class="score-select">
+            <option value="">Select your score</option>
+            <option value="40">AA (10)</option>
+            <option value="36">AB (9)</option>
+            <option value="32">BB (8)</option>
+            <option value="28">BC (7)</option>
+            <option value="24">CC (6)</option>
+            <option value="20">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mooc">MOOC</label>
+          <select id="mooc" class="score-select">
+            <option value="">Select your score</option>
+            <option value="30">AA (10)</option>
+            <option value="27">AB (9)</option>
+            <option value="24">BB (8)</option>
+            <option value="21">BC (7)</option>
+            <option value="18">CC (6)</option>
+            <option value="15">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="english">English</label>
+          <select id="english" class="score-select">
+            <option value="">Select your score</option>
+            <option value="20">AA (10)</option>
+            <option value="18">AB (9)</option>
+            <option value="16">BB (8)</option>
+            <option value="14">BC (7)</option>
+            <option value="12">CC (6)</option>
+            <option value="10">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="oslab">OS Lab</label>
+          <select id="oslab" class="score-select">
+            <option value="">Select your score</option>
+            <option value="10">AA (10)</option>
+            <option value="9">AB (9)</option>
+            <option value="8">BB (8)</option>
+            <option value="7">BC (7)</option>
+            <option value="6">CC (6)</option>
+            <option value="5">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="wtlab">WT Lab</label>
+          <select id="wtlab" class="score-select">
+            <option value="">Select your score</option>
+            <option value="10">AA (10)</option>
+            <option value="9">AB (9)</option>
+            <option value="8">BB (8)</option>
+            <option value="7">BC (7)</option>
+            <option value="6">CC (6)</option>
+            <option value="5">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="androidlab">Android Lab</label>
+          <select id="androidlab" class="score-select">
+            <option value="">Select your score</option>
+            <option value="10">AA (10)</option>
+            <option value="9">AB (9)</option>
+            <option value="8">BB (8)</option>
+            <option value="7">BC (7)</option>
+            <option value="6">CC (6)</option>
+            <option value="5">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="miniproject">Mini Project</label>
+          <select id="miniproject" class="score-select">
+            <option value="">Select your score</option>
+            <option value="10">AA (10)</option>
+            <option value="9">AB (9)</option>
+            <option value="8">BB (8)</option>
+            <option value="7">BC (7)</option>
+            <option value="6">CC (6)</option>
+            <option value="5">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <button type="button" onclick="calculateResult()">Submit</button>
+        <div class="result" id="result"></div>
+      </form>
+    </div>
+
+    <div class="container">
+      <hr />
+      <hr />
+      <h3>Hints</h3>
+      <ul>
+        <li>AA: 10 [top 6-7 students get this grade]</li>
+        <li>AB: 9 [next 12-13 students get this grade]</li>
+        <li>BB: 8 [next 12-13 students get this grade]</li>
+        <li>BC : 7 [next 12-13 students get this grade]</li>
+        <li>CC : 6 [next 12-13 students get this grade]</li>
+        <li>CD : 5 [next 12-13 students get this grade]</li>
+        <li>DD : 0 (if you think you are failing)</li>
+      </ul>
+      <p>
+        Make sure to select a grade for each subject to get the total score. 
+        <br />
+        This may not be accurate but I have tried to make it as close as
+        possible to the actual grading system.
+      </p>
+    </div>
+
+    <script>
+      function calculateResult() {
+        const scores = document.querySelectorAll(".score-select");
+        let total = 0;
+        let allSelected = true;
+
+        scores.forEach((score) => {
+          const value = parseInt(score.value);
+          if (isNaN(value)) {
+            allSelected = false;
+          } else {
+            total += value;
+          }
+        });
+
+        const resultDiv = document.getElementById("result");
+        if (!allSelected) {
+          resultDiv.textContent = "Please select a score for all subjects.";
+          resultDiv.style.color = "red";
+        } else {
+          resultDiv.textContent = `Total Score : ${(total / 22).toFixed(4)} SGPI` ;
+          resultDiv.style.color = "green";
+        }
+      }
+    </script>
+  </body>
+</html>
