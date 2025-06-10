@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SGPI Calculator</title>
+    <title>SGPI Calculator 2.0 </title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -23,6 +23,7 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         max-width: 400px;
         width: 100%;
+        margin-bottom: 20px;
       }
       h1 {
         text-align: center;
@@ -36,7 +37,7 @@
         margin-bottom: 5px;
         color: #555;
       }
-      .form-group select {
+      .form-group select, .form-group input {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -63,15 +64,41 @@
         font-size: 18px;
         color: #333;
       }
+      .tabs {
+        display: flex;
+        margin-bottom: 20px;
+      }
+      .tab {
+        padding: 10px 20px;
+        background-color: #ddd;
+        cursor: pointer;
+        border-radius: 5px 5px 0 0;
+        margin-right: 5px;
+      }
+      .tab.active {
+        background-color: #007bff;
+        color: white;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Grade Calculator</h1>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('sgpi')">SGPI Calculator</div>
+      <div class="tab" onclick="switchTab('cgpi')">CGPI Calculator</div>
+    </div>
+
+    <div class="container tab-content active" id="sgpi-tab">
+      <h1>SGPI Calculator Sem II </h1>
       <form id="gradeForm">
         <div class="form-group">
-          <label for="sepm">SEPM</label>
-          <select id="sepm" class="score-select">
+          <label for="dm">DM</label>
+          <select id="dm" class="score-select">
             <option value="">Select your score</option>
             <option value="30">AA (10)</option>
             <option value="27">AB (9)</option>
@@ -83,8 +110,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="mis">MIS</label>
-          <select id="mis" class="score-select">
+          <label for="daa">DAA</label>
+          <select id="daa" class="score-select">
             <option value="">Select your score</option>
             <option value="30">AA (10)</option>
             <option value="27">AB (9)</option>
@@ -96,21 +123,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="os">OS</label>
-          <select id="os" class="score-select">
-            <option value="">Select your score</option>
-            <option value="30">AA (10)</option>
-            <option value="27">AB (9)</option>
-            <option value="24">BB (8)</option>
-            <option value="21">BC (7)</option>
-            <option value="18">CC (6)</option>
-            <option value="15">CD (5)</option>
-            <option value="0">DD :(</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="math">Math</label>
-          <select id="math" class="score-select">
+          <label for="msf">MSF-II</label>
+          <select id="msf" class="score-select">
             <option value="">Select your score</option>
             <option value="40">AA (10)</option>
             <option value="36">AB (9)</option>
@@ -122,8 +136,21 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="mooc">MOOC</label>
-          <select id="mooc" class="score-select">
+          <label for="cc">CC/DW</label>
+          <select id="cc" class="score-select">
+            <option value="">Select your score</option>
+            <option value="40">AA (10)</option>
+            <option value="36">AB (9)</option>
+            <option value="32">BB (8)</option>
+            <option value="28">BC (7)</option>
+            <option value="24">CC (6)</option>
+            <option value="20">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sdp">SDP</label>
+          <select id="sdp" class="score-select">
             <option value="">Select your score</option>
             <option value="30">AA (10)</option>
             <option value="27">AB (9)</option>
@@ -135,34 +162,21 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="english">English</label>
-          <select id="english" class="score-select">
+          <label for="pcs">PCS</label>
+          <select id="pcs" class="score-select">
             <option value="">Select your score</option>
-            <option value="20">AA (10)</option>
-            <option value="18">AB (9)</option>
-            <option value="16">BB (8)</option>
-            <option value="14">BC (7)</option>
-            <option value="12">CC (6)</option>
-            <option value="10">CD (5)</option>
+            <option value="30">AA (10)</option>
+            <option value="27">AB (9)</option>
+            <option value="24">BB (8)</option>
+            <option value="21">BC (7)</option>
+            <option value="18">CC (6)</option>
+            <option value="15">CD (5)</option>
             <option value="0">DD :(</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="oslab">OS Lab</label>
-          <select id="oslab" class="score-select">
-            <option value="">Select your score</option>
-            <option value="10">AA (10)</option>
-            <option value="9">AB (9)</option>
-            <option value="8">BB (8)</option>
-            <option value="7">BC (7)</option>
-            <option value="6">CC (6)</option>
-            <option value="5">CD (5)</option>
-            <option value="0">DD :(</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="wtlab">WT Lab</label>
-          <select id="wtlab" class="score-select">
+          <label for="daa-lab">DAA Lab</label>
+          <select id="daa-lab" class="score-select">
             <option value="">Select your score</option>
             <option value="10">AA (10)</option>
             <option value="9">AB (9)</option>
@@ -174,8 +188,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="androidlab">Android Lab</label>
-          <select id="androidlab" class="score-select">
+          <label for="sdp-lab">SDP Lab</label>
+          <select id="sdp-lab" class="score-select">
             <option value="">Select your score</option>
             <option value="10">AA (10)</option>
             <option value="9">AB (9)</option>
@@ -187,7 +201,20 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="miniproject">Mini Project</label>
+          <label for="jvp-lab">JVP Lab</label>
+          <select id="jvp-lab" class="score-select">
+            <option value="">Select your score</option>
+            <option value="10">AA (10)</option>
+            <option value="9">AB (9)</option>
+            <option value="8">BB (8)</option>
+            <option value="7">BC (7)</option>
+            <option value="6">CC (6)</option>
+            <option value="5">CD (5)</option>
+            <option value="0">DD :(</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="miniproject">Mini Project II</label>
           <select id="miniproject" class="score-select">
             <option value="">Select your score</option>
             <option value="10">AA (10)</option>
@@ -199,8 +226,24 @@
             <option value="0">DD :(</option>
           </select>
         </div>
-        <button type="button" onclick="calculateResult()">Submit</button>
-        <div class="result" id="result"></div>
+        <button type="button" onclick="calculateSGPI()">Calculate SGPI</button>
+        <div class="result" id="sgpi-result"></div>
+      </form>
+    </div>
+
+    <div class="container tab-content" id="cgpi-tab">
+      <h1>CGPI Calculator</h1>
+      <form id="cgpiForm">
+        <div class="form-group">
+          <label for="sem1">Semester 1 SGPI</label>
+          <input type="number" id="sem1" step="0.01" min="0" max="10" placeholder="Enter your Semester 1 SGPI">
+        </div>
+        <div class="form-group">
+          <label for="sem2">Semester 2 SGPI</label>
+          <input type="number" id="sem2" step="0.01" min="0" max="10" placeholder="Enter your Semester 2 SGPI">
+        </div>
+        <button type="button" onclick="calculateCGPI()">Calculate CGPI</button>
+        <div class="result" id="cgpi-result"></div>
       </form>
     </div>
 
@@ -208,15 +251,6 @@
       <hr />
       <hr />
       <h3>Hints</h3>
-      <ul>
-        <li>AA: 10 [top 6-7 students get this grade]</li>
-        <li>AB: 9 [next 12-13 students get this grade]</li>
-        <li>BB: 8 [next 12-13 students get this grade]</li>
-        <li>BC : 7 [next 12-13 students get this grade]</li>
-        <li>CC : 6 [next 12-13 students get this grade]</li>
-        <li>CD : 5 [next 12-13 students get this grade]</li>
-        <li>DD : 0 (if you think you are failing)</li>
-      </ul>
       <p>
         Make sure to select a grade for each subject to get the total score. 
         <br />
@@ -226,7 +260,7 @@
     </div>
 
     <script>
-      function calculateResult() {
+      function calculateSGPI() {
         const scores = document.querySelectorAll(".score-select");
         let total = 0;
         let allSelected = true;
@@ -240,14 +274,50 @@
           }
         });
 
-        const resultDiv = document.getElementById("result");
+        const resultDiv = document.getElementById("sgpi-result");
         if (!allSelected) {
           resultDiv.textContent = "Please select a score for all subjects.";
           resultDiv.style.color = "red";
         } else {
-          resultDiv.textContent = `Total Score : ${(total / 22).toFixed(4)} SGPI` ;
+          const sgpi = (total / 24).toFixed(4);
+          resultDiv.textContent = `Current Semester SGPI: ${sgpi}`;
           resultDiv.style.color = "green";
+          document.getElementById("current-sem").value = sgpi;
         }
+      }
+
+      function calculateCGPI() {
+        const sem1 = parseFloat(document.getElementById("sem1").value);
+        const sem2 = parseFloat(document.getElementById("sem2").value);
+        
+        
+        if (isNaN(sem1) || isNaN(sem2) ) {
+          document.getElementById("cgpi-result").textContent = "Please fill all fields (calculate current semester SGPI first).";
+          document.getElementById("cgpi-result").style.color = "red";
+          return;
+        }
+
+        const cgpi = (((sem1*22) + (sem2*24) ) / (22+24) ).toFixed(4);
+        document.getElementById("cgpi-result").textContent = `Your CGPI: ${cgpi}`;
+        document.getElementById("cgpi-result").style.color = "green";
+      }
+
+      function switchTab(tabName) {
+        // Hide all tabs
+        document.querySelectorAll('.tab-content').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        
+        // Deactivate all tab buttons
+        document.querySelectorAll('.tab').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        
+        // Activate selected tab
+        document.getElementById(`${tabName}-tab`).classList.add('active');
+        
+        // Activate selected tab button
+        document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`).classList.add('active');
       }
     </script>
   </body>
