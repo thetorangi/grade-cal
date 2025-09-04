@@ -1,3 +1,1 @@
-# grade-cal 
-
-    
+# grade-cal
